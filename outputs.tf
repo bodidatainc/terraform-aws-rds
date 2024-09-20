@@ -24,7 +24,7 @@ output "subnet_group_id" {
 }
 
 output "security_group_id" {
-  value       = join("", aws_security_group.default[*].id)
+  value       = local.should_create_new_sg ? join("", aws_security_group.default[*].id) : null
   description = "ID of the Security Group"
 }
 
